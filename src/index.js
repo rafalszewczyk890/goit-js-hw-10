@@ -7,7 +7,7 @@ const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-searchBox.addEventListener('input', event => {
+function handleInput(event) {
   fetchCountries(`${event.currentTarget.value}`).then(json => {
     if (json.length > 10) {
       Notiflix.Notify.info(
@@ -25,12 +25,19 @@ searchBox.addEventListener('input', event => {
       countryList.innerHTML = ' ';
       countryInfo.insertAdjacentHTML(
         'afterbegin',
-        `<p>${json[0].name.official}</p>`
+        `<p><img class="flag" src="${json[0].flags.svg}"/>${
+          json[0].name.official
+        }</p>
+        <p>Capital: ${json[0].capital}</p>
+        <p>Population: ${json[0].population}</p>
+        <p>Languages: ${JSON.stringify(Object.values(json[0].languages))}</p>`
       );
-      searchBox.removeEventListener('input');
+      searchBox.removeEventListener('input', handleInput);
     }
   });
-});
+}
+
+searchBox.addEventListener('input', handleInput);
 
 fetchCountries('japan').then(json => {
   console.log(json);
