@@ -21,6 +21,14 @@ searchBox.addEventListener('input', event => {
         );
       });
     }
+    if (json.length == 1) {
+      countryList.innerHTML = ' ';
+      countryInfo.insertAdjacentHTML(
+        'afterbegin',
+        `<p>${json[0].name.official}</p>`
+      );
+      searchBox.removeEventListener('input');
+    }
   });
 });
 
