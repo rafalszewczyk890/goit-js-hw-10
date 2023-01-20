@@ -18,3 +18,50 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.country-list {
+  list-style: none;
+  max-width: fit-content;
+  padding: 10px;
+}
+
+.country-item {
+  display: flex;
+  align-items: center;
+  -webkit-animation: fadeinout 250ms linear forwards;
+  animation: fadeinout 250ms linear forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeinout {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinout {
+  100% {
+    opacity: 1;
+  }
+}
+
+.listed-country {
+  background: #21212144;
+  padding: 10px;
+  border-radius: 3px;
+  align-items: center;
+  max-width: 400px;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.flag {
+  width: 60px;
+  height: 40px;
+  margin: 10px;
+  border: #2121212d solid 2px;
+  border-radius: 3px;
+  -webkit-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+  box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+}
