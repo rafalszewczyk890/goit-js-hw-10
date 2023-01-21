@@ -17,6 +17,9 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin-left: 16px;
+  margin-top: 16px;
+  border-radius: 7px;
 }
 
 .country-list {
@@ -64,4 +67,13 @@ body {
   -webkit-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
   -moz-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
   box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+  max-width: 400px;
+  border-radius: 7px;
+  border: 3px dotted rgba(0, 0, 0, 0.199);
 }
