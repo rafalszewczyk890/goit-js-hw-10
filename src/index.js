@@ -37,8 +37,8 @@ function handleInput(event) {
   });
 }
 
-searchBox.addEventListener('input', handleInput);
-
 fetchCountries('japan').then(json => {
   console.log(json);
 });
+
+searchBox.addEventListener('input', handleInput);
