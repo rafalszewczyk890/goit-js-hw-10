@@ -38,9 +38,7 @@ function createCountryHtml(json) {
         <p class="country-name"><b>${json[0].name.official}</b></p>
         <p><b>Capital:</b> ${json[0].capital}</p>
         <p><b>Population:</b> ${json[0].population}</p>
-        <p><b>Languages:</b> ${JSON.stringify(
-          Object.values(json[0].languages)
-        )}</p>`
+        <p><b>Languages:</b> ${Object.values(json[0].languages)}</p>`
   );
 }
 
