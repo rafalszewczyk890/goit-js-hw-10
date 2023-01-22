@@ -8,15 +8,21 @@ const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
+// function notify(json) {
+
+// }
+
 function handleInput() {
   fetchCountries(`${searchBox.value}`).then(json => {
     if (json.length > 10) {
+      countryList.style.padding = '0px';
       countryInfo.innerHTML = ' ';
       countryList.innerHTML = ' ';
       Notiflix.Notify.info(
         'Too many matches found. Please enter a more specific name.'
       );
     } else if (json.length <= 10) {
+      countryList.style.padding = '10px';
       countryInfo.innerHTML = ' ';
       countryList.innerHTML = ' ';
       json.forEach(country => {
