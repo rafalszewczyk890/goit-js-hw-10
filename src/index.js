@@ -1,19 +1,24 @@
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
 import Notiflix from 'notiflix';
+const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-function handleInput(event) {
-  fetchCountries(`${event.currentTarget.value}`).then(json => {
+function handleInput() {
+  fetchCountries(`${searchBox.value}`).then(json => {
     if (json.length > 10) {
+      countryInfo.innerHTML = ' ';
+      countryList.innerHTML = ' ';
       Notiflix.Notify.info(
         'Too many matches found. Please enter a more specific name.'
       );
     } else if (json.length <= 10) {
+      countryInfo.innerHTML = ' ';
+      countryList.innerHTML = ' ';
       json.forEach(country => {
         countryList.insertAdjacentHTML(
           'afterbegin',
@@ -23,22 +28,19 @@ function handleInput(event) {
     }
     if (json.length == 1) {
       countryList.innerHTML = ' ';
+      countryInfo.innerHTML = ' ';
       countryInfo.insertAdjacentHTML(
         'afterbegin',
-        `<p><img class="flag" src="${json[0].flags.svg}"/>${
-          json[0].name.official
-        }</p>
-        <p>Capital: ${json[0].capital}</p>
-        <p>Population: ${json[0].population}</p>
-        <p>Languages: ${JSON.stringify(Object.values(json[0].languages))}</p>`
+        `<img class="country-info-flag" src="${json[0].flags.svg}"/>
+        <p class="country-name"><b>${json[0].name.official}</b></p>
+        <p><b>Capital:</b> ${json[0].capital}</p>
+        <p><b>Population:</b> ${json[0].population}</p>
+        <p><b>Languages:</b> ${JSON.stringify(
+          Object.values(json[0].languages)
+        )}</p>`
       );
-      searchBox.removeEventListener('input', handleInput);
     }
   });
 }
 
-fetchCountries('japan').then(json => {
-  console.log(json);
-});
-
-searchBox.addEventListener('input', handleInput);
+searchBox.addEventListener('input', debounce(handleInput, DEBOUNCE_DELAY));

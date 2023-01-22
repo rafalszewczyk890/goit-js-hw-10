@@ -31,21 +31,9 @@ body {
 .country-item {
   display: flex;
   align-items: center;
-  -webkit-animation: fadeinout 250ms linear forwards;
-  animation: fadeinout 250ms linear forwards;
+  -webkit-animation: fadeinout 500ms linear forwards;
+  animation: fadeinout 500ms linear forwards;
   opacity: 0;
-}
-
-@-webkit-keyframes fadeinout {
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeinout {
-  100% {
-    opacity: 1;
-  }
 }
 
 .listed-country {
@@ -76,4 +64,38 @@ body {
   max-width: 400px;
   border-radius: 7px;
   border: 3px dotted rgba(0, 0, 0, 0.199);
+}
+
+.country-info {
+  margin-left: 16px;
+  font-size: large;
+  -webkit-animation: fadeinoutcountry 500ms linear forwards;
+  animation: fadeinoutcountry 500ms linear forwards;
+  opacity: 0;
+}
+
+.country-name {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.country-info-flag {
+  max-width: 200px;
+  border: #2121212d solid 2px;
+  border-radius: 3px;
+  -webkit-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+  box-shadow: 5px 5px 10px -6px rgba(66, 68, 90, 1);
+}
+
+@-webkit-keyframes fadeinout {
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeinoutcountry {
+  100% {
+    opacity: 1;
+  }
 }
