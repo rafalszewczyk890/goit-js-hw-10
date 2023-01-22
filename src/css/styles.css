@@ -64,6 +64,7 @@ body {
   max-width: 360px;
   border-radius: 7px;
   border: 3px dotted rgba(0, 0, 0, 0.199);
+  transition: 250ms;
 }
 
 .country-info {
